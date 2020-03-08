@@ -15,6 +15,17 @@ module.exports = {
       {
         test: /\.css$/, // test is file extension as regexp
         use: ["style-loader", "css-loader"]
+      },
+      {
+        test: /\.s[ac]ss$/i, // sass or scss
+        use: [
+          // Creates `style` nodes from JS strings
+          "style-loader",
+          // Translates CSS into CommonJS
+          "css-loader",
+          // Compiles Sass to CSS
+          "sass-loader"
+        ]
       }
     ]
   }
