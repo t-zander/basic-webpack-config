@@ -5,7 +5,17 @@ module.exports = {
   entry: "./src/index.js",
   // where to put bundled js file
   output: {
-    filename: "main.js",
+    filename: "bundle.js",
     path: path.resolve(__dirname, "dist")
+  },
+  module: {
+    // Here we can tell webpack how to handle each extension
+    // and what loader to use for it
+    rules: [
+      {
+        test: /\.css$/, // test is file extension as regexp
+        use: ["style-loader", "css-loader"]
+      }
+    ]
   }
 };
