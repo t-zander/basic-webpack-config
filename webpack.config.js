@@ -1,11 +1,24 @@
 /* This is a config file that webpack will use */
 const path = require("path");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
-  entry: "./src/index.js",
+  entry: {
+    app: "./src/index.js",
+    someMath: "./src/someMath.js"
+  },
+  // Takes all entry files
+  // creates index.html for us
+  // inserts script tags with appropriate paths
+  // specified in entry object above
+  plugins: [
+    new HtmlWebpackPlugin({
+      title: "Output Management"
+    })
+  ],
   // where to put bundled js file
   output: {
-    filename: "bundle.js",
+    filename: "[name].bundle.js",
     path: path.resolve(__dirname, "dist")
   },
   module: {
