@@ -12,9 +12,14 @@ module.exports = {
     // Here we can tell webpack how to handle each extension
     // and what loader to use for it
     rules: [
-      /* FILES */
+      /* IMAGES */
       {
         test: /\.(png|svg|jpg|gif)$/,
+        use: ["file-loader"]
+      },
+      /* FONTS */
+      {
+        test: /\.(woff|woff2|eot|ttf|otf)$/,
         use: ["file-loader"]
       },
       /* STYLES */
