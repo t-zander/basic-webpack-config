@@ -6,13 +6,13 @@ const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 module.exports = {
   mode: "development",
   devtool: "inline-source-map",
+  entry: {
+    app: "./src/index.js"
+  },
   devServer: {
     contentBase: path.resolve(__dirname, "dist"),
-    port: 3000
-  },
-  entry: {
-    app: "./src/index.js",
-    someMath: "./src/someMath.js"
+    port: 3000,
+    hot: true
   },
   // Takes all entry files
   // creates index.html for us
