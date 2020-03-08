@@ -1,7 +1,15 @@
 const merge = require("webpack-merge");
 const common = require("./webpack.common");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 
 module.exports = merge(common, {
   mode: "production",
-  devtool: "source-map"
+  devtool: "source-map",
+  plugins: [
+    new HtmlWebpackPlugin({
+      title: "Output Management"
+    }),
+    new CleanWebpackPlugin()
+  ]
 });

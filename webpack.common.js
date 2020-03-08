@@ -1,7 +1,6 @@
 /* This is a config file that webpack will use */
 const path = require("path");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
-const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
   entry: {
@@ -11,12 +10,7 @@ module.exports = {
   // creates index.html for us
   // inserts script tags with appropriate paths
   // specified in entry object above
-  plugins: [
-    new HtmlWebpackPlugin({
-      title: "Output Management"
-    }),
-    new CleanWebpackPlugin()
-  ],
+  plugins: [new MiniCssExtractPlugin()],
   // where to put bundled js file
   output: {
     filename: "[name].bundle.js",
@@ -39,13 +33,21 @@ module.exports = {
       /* STYLES */
       {
         test: /\.css$/, // test is file extension as regexp
-        use: ["style-loader", "css-loader"]
+        use: [{ loader: MiniCssExtractPlugin.loader }, "css-loader"]
       },
       {
         test: /\.s[ac]ss$/i, // sass or scss
         use: [
           // Creates `style` nodes from JS strings
-          "style-loader",
+          {
+            loader: MiniCssExtractPlugin.loader,
+            options: {
+              // only enable hot in development
+              hmr: process.env.NODE_ENV === "development",
+              // if hmr does not work, this is a forceful method.
+              reloadAll: true
+            }
+          },
           // Translates CSS into CommonJS
           "css-loader",
           // Compiles Sass to CSS
