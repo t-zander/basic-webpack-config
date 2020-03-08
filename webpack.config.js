@@ -12,6 +12,12 @@ module.exports = {
     // Here we can tell webpack how to handle each extension
     // and what loader to use for it
     rules: [
+      /* FILES */
+      {
+        test: /\.(png|svg|jpg|gif)$/,
+        use: ["file-loader"]
+      },
+      /* STYLES */
       {
         test: /\.css$/, // test is file extension as regexp
         use: ["style-loader", "css-loader"]

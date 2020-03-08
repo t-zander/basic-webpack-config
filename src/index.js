@@ -1,13 +1,22 @@
 // we can import it now as webpack allows import syntax
 import _ from "lodash";
 import "./style.scss";
+import catImage from "./cat.jpg";
 
 function component() {
   const element = document.createElement("div");
 
   // Lodash, currently included via a script, is required for this line to work
-  element.innerHTML = _.join(["Hello", "webpack"], " ");
-  element.classList.add("red-text");
+  element.classList.add("container");
+  const heading = document.createElement("h3");
+  heading.innerHTML = _.join(["Your code.", "I hate it"], " ");
+  heading.classList.add("heading");
+
+  const myImage = new Image();
+  myImage.src = catImage;
+
+  element.appendChild(heading);
+  element.appendChild(myImage);
   return element;
 }
 
