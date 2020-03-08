@@ -14,6 +14,6 @@ function component() {
   return element;
 }
 
-console.log(getSum(10, 20));
+console.log("Sum yeah", getSum(10, 20));
 
 document.body.appendChild(component());

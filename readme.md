@@ -15,7 +15,7 @@
 
 ####Plugins and their goal:
 
-- **HtmlWebpackPlugin** - automatically creates index.html for us
+- [HtmlWebpackPlugin](https://webpack.js.org/plugins/html-webpack-plugin/) - automatically creates index.html for us
   Then takes all files specified in entry
 
   ```
@@ -27,5 +27,7 @@
 
   and puts them into index.html
 
-- **clean-webpack-plugin**
+- [clean-webpack-plugin](https://github.com/johnagan/clean-webpack-plugin)
   Will clear `dist/` folder before every build
+
+- [webpack-dev-server](https://webpack.js.org/configuration/dev-server/) Runs server in the background and reloads the page every time we change our code
